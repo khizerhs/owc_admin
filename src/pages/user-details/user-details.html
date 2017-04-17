@@ -14,11 +14,66 @@
 
 
 <ion-content padding>
-	  <h4>Name: {{user.name}}<br/>
-	  Address : {{user.address}}<br/>
-	  Is Administrator? : {{user.admin}}<br/>
-	  Phone : {{user.phone}}<br/>
-	  User ID : {{user.login}}<br/>
-	  Password : {{user.pass}}<br/>
-	  </h4>
+	  <ion-item>
+	  	<ion-label>
+	  		Name
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.name}}
+	  	</div>
+	  </ion-item>
+
+	  <ion-item>
+	  	<ion-label>
+	  		Address
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.address}}
+	  	</div>
+	  </ion-item>
+
+	  <ion-item>
+	  	<ion-label>
+	  		Phone
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.phone}}
+	  	</div>
+	  </ion-item>
+
+	  <ion-item>
+	  	<ion-label>
+	  		Is Administrator?
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.admin}}
+	  	</div>
+	  </ion-item>
+	  
+	  <ion-item>
+	  	<ion-label>
+	  		User ID
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.login}}
+	  	</div>
+	  </ion-item>
+
+	  <ion-item>
+	  	<ion-label>
+	  		Password
+	  	</ion-label>
+	  	<div item-content>
+	  		{{user.pass}}
+	  	</div>
+	  </ion-item>
+
+	<ion-fab right bottom>
+   		<button ion-fab (click)="goToEdit(user)"> <ion-icon name="create"></ion-icon></button>
+ 	</ion-fab>
+
+ 	<ion-fab left bottom>
+   		<button ion-fab (click)="deleteUser(user)"> <ion-icon name="trash"></ion-icon></button>
+ 	</ion-fab>
+
 </ion-content>

@@ -22,11 +22,10 @@ import { UserDetailsPage } from '../user-details/user-details';
 export class UsersPage {
 
 	users: User[]
+	smartFarmUsers: SmartfarmUsers;
 
   constructor(public navCtrl: NavController, private smartfarmUsers: SmartfarmUsers) {
-  	smartfarmUsers.load().subscribe(users => {
-  	this.users = users;
-  	})
+   	this.smartFarmUsers = smartfarmUsers;
   }
 
   goToDetails(user: User){
@@ -37,9 +36,10 @@ export class UsersPage {
   	this.navCtrl.push(CreateUserPage)
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Users');
+  ionViewWillEnter(){
+  	console.log("will enter");
+  	this.smartFarmUsers.load().subscribe(users => {
+  	this.users = users;
+  	})	
   }
-
 }

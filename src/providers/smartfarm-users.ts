@@ -25,4 +25,18 @@ export class SmartfarmUsers {
       .map(res => <User[]>res.json());
   }
 
+  save(createFormData) {
+    JSON.stringify(createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/users`,createFormData);
+  }
+
+  update(updateFormData, id){
+    JSON.stringify(updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/users/${id}`,updateFormData);
+  }
+
+  delete(id){
+    return this.http.delete(`${this.smartfarmApiUrl}/users/${id}`);
+  }
+
 }
