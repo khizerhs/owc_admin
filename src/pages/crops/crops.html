@@ -10,12 +10,20 @@
    <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon> 
     </button>
-    <ion-title>crops</ion-title>
+    <ion-title>Crops</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
+	<ion-list>
+    	<button ion-item *ngFor="let crop of crops" (click)="goToDetails(crop)">
+	      <h2>{{ crop.name }}</h2>
+	      <h3>{{ crop.description }}</h3>
+	      <ion-icon name="information-circle" item-right></ion-icon>
+	    </button>
+	</ion-list>
+   	<ion-fab right bottom>
+   		<button ion-fab (click)="goToCreate()"> <ion-icon name="add-circle"></ion-icon></button>
+ 	</ion-fab>
 </ion-content>
