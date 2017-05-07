@@ -17,5 +17,15 @@
 
 
 <ion-content padding>
+<ion-list>
+    	<button ion-item *ngFor="let sensor of sensors" (click)="goToDetails(sensor)">
+	      <h2>{{ sensor.name }}</h2>
+	      <h3>{{ sensor.sensor_type }}</h3>
+	      <ion-icon name="information-circle" item-right></ion-icon>
+	    </button>
+	</ion-list>
+   	<ion-fab right bottom>
+   		<button ion-fab (click)="goToCreate()"> <ion-icon name="add-circle"></ion-icon></button>
+ 	</ion-fab>
 
 </ion-content>
