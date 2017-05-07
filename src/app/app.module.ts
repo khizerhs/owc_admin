@@ -4,12 +4,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http';
 
+import { LoginPage } from '../pages/login/login';
+
 import { UsersPage } from '../pages/users/users';
 import { CropsPage } from '../pages/crops/crops';
 import { EditCropPage } from '../pages/edit-crop/edit-crop';
 import { CreateCropPage } from '../pages/create-crop/create-crop';
 import { CropDetailsPage } from '../pages/crop-details/crop-details';
 import { SensorsPage } from '../pages/sensors/sensors';
+import { SensorCropPage } from '../pages/sensor-crop/sensor-crop';
 
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { CreateUserPage } from '../pages/create-user/create-user';
@@ -36,11 +39,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CropDetailsPage,
     CreateUserPage,
     CreateCropPage,
-    EditCropPage
+    EditCropPage,
     EditUserPage,
     CreateSensorPage,
     SensorDetailsPage,
-    EditSensorPage
+    EditSensorPage,
+    SensorCropPage,
+    LoginPage
   ],
   imports: [
     HttpModule,
@@ -62,6 +67,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CreateSensorPage,
     SensorDetailsPage,
     EditSensorPage,
+    SensorCropPage,
+    LoginPage
   ],
   providers: [
     SmartfarmUsers,

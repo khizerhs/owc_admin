@@ -5,6 +5,8 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { UsersPage } from '../pages/users/users';
 import { CropsPage } from '../pages/crops/crops';
 import { SensorsPage } from '../pages/sensors/sensors'
+import { SensorCropPage } from '../pages/sensor-crop/sensor-crop'
+import { LoginPage } from '../pages/login/login'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,8 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  // make UsersPage the root (or first) page
-  rootPage = UsersPage;
+  // make LoginPage the root (or first) page
+  rootPage = LoginPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -32,7 +34,8 @@ export class MyApp {
     this.pages = [
       { title: 'Manage Users', component: UsersPage },
       { title: 'Manage Crops', component: CropsPage },
-      { title: 'Manage Sensors', component: SensorsPage }
+      { title: 'Manage Sensors', component: SensorsPage },
+      { title: 'Sensor Crop', component: SensorCropPage}
     ];
   }
 

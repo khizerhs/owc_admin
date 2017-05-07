@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -14,7 +14,7 @@ import {User} from '../models/user';
 @Injectable()
 export class SmartfarmUsers {
 
-  smartfarmApiUrl = 'http://localhost:3000';
+  smartfarmApiUrl = 'https://sjsusmartfarm-backend.herokuapp.com';
 
   constructor(public http: Http) {
     console.log('Hello SmartfarmUsers Provider');
@@ -37,6 +37,32 @@ export class SmartfarmUsers {
 
   delete(id){
     return this.http.delete(`${this.smartfarmApiUrl}/users/${id}`);
+  }
+
+   public login(credentials) {
+    if (credentials.name === null || credentials.password === null) {
+      return Observable.throw("Please insert credentials");
+    } else {
+      return Observable.create(observer => {
+        var url = this.smartfarmApiUrl + '/users/login';
+        var data = JSON.stringify({name: credentials.name, password: credentials.password})
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+
+        this.http.post(url, data, {headers:headers})
+          .subscribe(data => {
+          
+           // if (200 === data.status) {
+           //  this.shareService.user_info = data.json()
+           // }
+
+            observer.next(200 === data.status);
+            observer.complete();
+           }, error => {
+             observer.next(false);
+             observer.complete();
+           });
+      });
+    }
   }
 
 }

@@ -23,7 +23,7 @@ export class CreateUserPage {
 	smartfarmUsers: SmartfarmUsers;
 	responseCode;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, private smartFarmUsers: SmartfarmUsers, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, private smartFarmUsers: SmartfarmUsers, public alertCtrl: AlertController) {  
   	this.createUserForm = formBuilder.group({
         name: [''],
         login: [''],
