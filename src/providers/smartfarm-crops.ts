@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 import {Crop} from '../models/crop';
+import {Stage} from '../models/stage';
 
 /*
   Generated class for the SmartfarmCrops provider.
@@ -25,9 +26,20 @@ export class SmartfarmCrops {
       .map(res => <Crop[]>res.json());
   }
 
+    loadstages(id): Observable<Stage[]> {
+      console.log(id)
+    return this.http.get(`${this.smartfarmApiUrl}/cropstage/${id}`)
+      .map(res => <Stage[]>res.json());
+  }
+
   save(createFormData) {
     JSON.stringify(createFormData);
     return this.http.post(`${this.smartfarmApiUrl}/crops`,createFormData);
+  }
+
+  saveStage(createFormData) {
+    JSON.stringify(createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/cropstage`,createFormData);
   }
 
     update(updateFormData, id){
@@ -35,8 +47,17 @@ export class SmartfarmCrops {
     return this.http.put(`${this.smartfarmApiUrl}/crops/${id}`,updateFormData);
   }
 
+    updateStage(updateFormData, id){
+    JSON.stringify(updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/cropstage`,updateFormData);
+  }
+
   delete(id){
     return this.http.delete(`${this.smartfarmApiUrl}/crops/${id}`);
+  }
+
+  deleteStage(id){
+    return this.http.delete(`${this.smartfarmApiUrl}/cropstage`);
   }
 
 }

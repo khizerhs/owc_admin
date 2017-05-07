@@ -1,0 +1,35 @@
+<!--
+  Generated template for the CreateStage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create Stage</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+<p *ngIf="submitAttempt" style="color: #ea6153;">Please fill out all details accurately.</p>
+
+    <form [formGroup] = "createStageForm">      
+    
+   <ion-item>
+	  <ion-label floating >Stage</ion-label>
+  	  <ion-input type="text" formControlName="stage"></ion-input>
+	</ion-item>
+
+  	<ion-item>
+	  <ion-label floating>Crop Coefficient</ion-label>
+  	  <ion-input type="text" formControlName="crop_coefficient"></ion-input>
+	</ion-item>
+
+	<button ion-button round (click)="saveStage()">Add Stage</button>
+
+	</form>
+
+  </ion-content>
