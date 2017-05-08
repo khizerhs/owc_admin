@@ -38,4 +38,27 @@ export class SensorDetailsPage {
     console.log('ionViewDidLoad SensorDetails');
   }
 
+  deleteSensor(toDeleteSensor: Sensor){
+    console.log(toDeleteSensor);
+    this.smartfarmSensors.delete(toDeleteSensor._id)
+      .subscribe(data => {  
+                  this.responseCode = data.status;
+                  if(this.responseCode == 200){
+                    this.showDeleteSuccessAlert();
+                    this.navCtrl.pop();
+                  }
+                 },
+                error => { console.log("something Went Wrong") } 
+            );
+      }
+
+  showDeleteSuccessAlert() {  
+      let alert = this.alertCtrl.create({
+        title: 'Success!',
+        subTitle: 'Sensor has been Deleted.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
 }

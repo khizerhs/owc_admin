@@ -15,7 +15,7 @@ import {Stage} from '../models/stage';
 @Injectable()
 export class SmartfarmCrops {
 
-  smartfarmApiUrl = 'http://localhost:3000';
+  smartfarmApiUrl = 'https://sjsusmartfarm-backend.herokuapp.com';
 
   constructor(public http: Http) {
     console.log('Hello SmartfarmCrop Provider');

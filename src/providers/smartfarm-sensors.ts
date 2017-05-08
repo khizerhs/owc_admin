@@ -14,7 +14,7 @@ import {Sensor} from '../models/sensor';
 @Injectable()
 export class SmartfarmSensors {
 
-	smartfarmApiUrl = 'http://0.0.0.0:3000';
+	smartfarmApiUrl = 'https://sjsusmartfarm-backend.herokuapp.com';
 
   constructor(public http: Http) {
     console.log('Hello SmartfarmSensors Provider');
