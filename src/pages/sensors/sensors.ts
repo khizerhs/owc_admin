@@ -39,7 +39,7 @@ export class SensorsPage {
   }
 
   ionViewWillEnter() {
-    console.log('ionViewDidLoad Sensors');;
+    console.log('ionViewDidLoad Sensors');
     this.smartFarmSensors.load().subscribe(sensors => {
     	this.sensors = sensors;
     })

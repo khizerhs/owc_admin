@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { SensorCrop } from '../../models/sensorCrop';
+
+import { SmartfarmSensorCrop } from '../../providers/smartfarm-sensor-crop';
+
+//import { SensorCropDetailsPage } from '../sensor-crop-details/sensor-crop-details';
+//import { AssignSensorPage } from '../assign-sensor/assign-sensor';
 /**
  * Generated class for the SensorCrop page.
  *
@@ -14,7 +20,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SensorCropPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  sensorCrops: SensorCrop[];
+	smartFarmSensorCrop: SmartfarmSensorCrop;
+
+  constructor(public navCtrl: NavController, private smartfarmSensorCrop: SmartfarmSensorCrop) {
+  	this.smartFarmSensorCrop = smartfarmSensorCrop;
+  }
+
+  goToDetails(sensorCrop: SensorCrop){
+  	console.log('will go to cropuser details');
+  	console.log({sensorCrop});
+  //	this.navCtrl.push(SensorCropDetailsPage, {sensorCrop});
+  }
+
+  goToAssignSensor(sensorCrop: SensorCrop){
+  console.log('This will go to assign sensor page');
+  	//this.navCtrl.push(AssignSensorPage,{sensorCrop});
+  }
+
+  ionViewWillEnter() {
+    console.log('ionViewDidLoad SensorCrops');;
+    this.smartFarmSensorCrop.load().subscribe(sensorCrops => {
+    	this.sensorCrops = sensorCrops;
+    })
   }
 
   ionViewDidLoad() {

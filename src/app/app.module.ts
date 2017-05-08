@@ -27,6 +27,7 @@ import { EditSensorPage } from '../pages/edit-sensor/edit-sensor';
 import { SmartfarmSensors } from '../providers/smartfarm-sensors';
 import { SmartfarmUsers } from '../providers/smartfarm-users';
 import { SmartfarmCrops } from '../providers/smartfarm-crops';
+import { SmartfarmSensorCrop } from '../providers/smartfarm-sensor-crop';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -80,6 +81,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SmartfarmUsers,
     SmartfarmCrops,
     SmartfarmSensors,
+    SmartfarmSensorCrop,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
