@@ -1,0 +1,37 @@
+<!--
+  Generated template for the EditStage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Stage details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form [formGroup] = "editStageForm">      
+    
+   <ion-item>
+	  <ion-label floating >Stage</ion-label>
+  	  <ion-input type="text" formControlName="stage"></ion-input>
+	</ion-item>
+
+  	<ion-item>
+	  <ion-label floating>Crop coefficient</ion-label>
+  	  <ion-input type="text" formControlName="crop_coefficient"></ion-input>
+	</ion-item>
+
+	<button ion-button round (click)="update()">Update the details</button>
+
+	</form>
+
+	<ion-fab left bottom>
+   		<button ion-fab (click)="deleteStage(stage)"> <ion-icon name="trash"></ion-icon></button>
+ 	</ion-fab>
+
+</ion-content>

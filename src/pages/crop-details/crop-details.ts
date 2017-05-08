@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Crop } from '../../models/crop';
+import { Stage } from '../../models/stage';
 import { EditCropPage } from '../edit-crop/edit-crop';
+import { CreateStagePage } from '../create-stage/create-stage';
+import { EditStagePage } from '../edit-stage/edit-stage';
 import { SmartfarmCrops } from '../../providers/smartfarm-crops';
 import { AlertController } from 'ionic-angular';
 
@@ -19,6 +22,7 @@ import { AlertController } from 'ionic-angular';
 export class CropDetailsPage {
 
 	crop: Crop;
+  stages: Stage[];
   smartfarmCrops: SmartfarmCrops;
   responseCode;
 
@@ -28,9 +32,19 @@ export class CropDetailsPage {
     this.responseCode = 0;
   }
 
+  createStage(toCreateStage: Crop){
+    console.log("Create Stage")
+    this.navCtrl.push(CreateStagePage,{toCreateStage});
+  }
+
+  goToEditStage(toEditStage: Stage){
+    console.log('Will go to edit page');
+    this.navCtrl.push(EditStagePage,{toEditStage});
+  }
+
   goToEdit(toEditCrop: Crop){
     console.log('Will go to edit page');
-    this.navCtrl.push(EditCropPage,{ toEditCrop});
+    this.navCtrl.push(EditCropPage,{toEditCrop});
   }
 
   deleteCrop(toDeleteCrop: Crop){
@@ -55,5 +69,13 @@ export class CropDetailsPage {
       });
       alert.present();
     }
+
+    ionViewWillEnter(){
+      console.log("WILLLLL")
+  	this.smartFarmCrops.loadstages(this.crop._id).subscribe(stages => {
+  	this.stages = stages;
+  })
+  console.log(this.stages)	
+  }
 
 }
