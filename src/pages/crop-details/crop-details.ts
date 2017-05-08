@@ -71,7 +71,6 @@ export class CropDetailsPage {
     }
 
     ionViewWillEnter(){
-      console.log("WILLLLL")
   	this.smartFarmCrops.loadstages(this.crop._id).subscribe(stages => {
   	this.stages = stages;
   })

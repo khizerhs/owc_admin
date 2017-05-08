@@ -26,6 +26,8 @@ export class EditStagePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, private smartFarmCrops: SmartfarmCrops, public alertCtrl: AlertController) {
     this.stage = navParams.get('toEditStage');
   	this.editStageForm = formBuilder.group({
+        id: [this.stage._id],
+        crop_id: [this.stage.crop_id],
         stage: [this.stage.stage],
         crop_coefficient: [this.stage.crop_coefficient],
     });
@@ -36,7 +38,7 @@ export class EditStagePage {
   update(){
 	console.log("Updating");
   	console.log(this.editStageForm.value);
-  	this.smartfarmCrops.updateStage(this.editStageForm.value, this.stage._id)
+  	this.smartfarmCrops.updateStage(this.editStageForm.value)
   		.subscribe(data => {	
   								this.responseCode = data.status;
   								if(this.responseCode == 200){
@@ -54,8 +56,9 @@ export class EditStagePage {
   	  }
 
   deleteStage(toDeleteStage: Stage){
-    console.log(toDeleteStage);
-    this.smartfarmCrops.deleteStage(toDeleteStage._id)
+    console.log("Delete stage")
+    console.log(this.editStageForm.value.id);
+    this.smartfarmCrops.deleteStage(this.editStageForm.value.id)
       .subscribe(data => {  
                   this.responseCode = data.status;
                   if(this.responseCode == 200){

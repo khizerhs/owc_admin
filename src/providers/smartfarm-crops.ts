@@ -47,7 +47,7 @@ export class SmartfarmCrops {
     return this.http.put(`${this.smartfarmApiUrl}/crops/${id}`,updateFormData);
   }
 
-    updateStage(updateFormData, id){
+    updateStage(updateFormData){
     JSON.stringify(updateFormData);
     return this.http.put(`${this.smartfarmApiUrl}/cropstage`,updateFormData);
   }
@@ -57,7 +57,7 @@ export class SmartfarmCrops {
   }
 
   deleteStage(id){
-    return this.http.delete(`${this.smartfarmApiUrl}/cropstage`);
+    return this.http.delete(`${this.smartfarmApiUrl}/cropstage/${id}`);
   }
 
 }

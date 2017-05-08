@@ -41,7 +41,7 @@ export class CreateStagePage {
   saveStage(){
 	console.log("saving");
   console.log(this.createStageForm.value);
-  	this.smartfarmCrops.save(this.createStageForm.value)
+  	this.smartfarmCrops.saveStage(this.createStageForm.value)
   		.subscribe(data => { this.responseCode = data.status;
                             if(this.responseCode == 201){
                               let alert = this.alertCtrl.create({
