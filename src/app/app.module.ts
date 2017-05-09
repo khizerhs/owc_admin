@@ -13,7 +13,11 @@ import { CreateCropPage } from '../pages/create-crop/create-crop';
 import { CropDetailsPage } from '../pages/crop-details/crop-details';
 import { EditStagePage } from '../pages/edit-stage/edit-stage';
 import { SensorsPage } from '../pages/sensors/sensors';
+
 import { SensorCropPage } from '../pages/sensor-crop/sensor-crop';
+import { SensorCropDetailsPage } from '../pages/sensor-crop-details/sensor-crop-details';
+import { AssignSensorCropPage } from '../pages/assign-sensor-crop/assign-sensor-crop';
+
 
 import { UserDetailsPage } from '../pages/user-details/user-details';
 import { CreateUserPage } from '../pages/create-user/create-user';
@@ -50,6 +54,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SensorDetailsPage,
     EditSensorPage,
     SensorCropPage,
+    SensorCropDetailsPage,
+    AssignSensorCropPage,
     LoginPage
   ],
   imports: [
@@ -75,6 +81,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SensorDetailsPage,
     EditSensorPage,
     SensorCropPage,
+    SensorCropDetailsPage,
+    AssignSensorCropPage,
     LoginPage
   ],
   providers: [

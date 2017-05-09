@@ -5,6 +5,9 @@ import 'rxjs/add/operator/map';
 
 import { SensorCrop } from '../models/sensorCrop';
 
+import {Sensor} from '../models/sensor';
+
+
 /*
   Generated class for the SmartfarmSensorCrop provider.
 
@@ -23,6 +26,11 @@ export class SmartfarmSensorCrop {
    load(): Observable<SensorCrop[]> {
     return this.http.get(`${this.smartfarmApiUrl}/crop-user`)
       .map(res => <SensorCrop[]>res.json());
+  }
+
+  getSensor(sensorId):Observable<Sensor>{
+    return this.http.get(`${this.smartfarmApiUrl}/sensors/${sensorId}`)
+    .map(res => <Sensor>res.json());
   }
 
 
