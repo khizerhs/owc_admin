@@ -15,7 +15,7 @@ import {User} from '../models/user';
 export class SmartfarmUsers {
 
   smartfarmApiUrl = 'https://sjsusmartfarm-backend.herokuapp.com';
-
+  
   constructor(public http: Http) {
     console.log('Hello SmartfarmUsers Provider');
   }
@@ -26,13 +26,15 @@ export class SmartfarmUsers {
   }
 
   save(createFormData) {
+   let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(createFormData);
-    return this.http.post(`${this.smartfarmApiUrl}/users`,createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/users`,createFormData, {headers:headers});
   }
 
   update(updateFormData, id){
+  let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(updateFormData);
-    return this.http.put(`${this.smartfarmApiUrl}/users/${id}`,updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/users/${id}`,updateFormData, {headers:headers});
   }
 
   delete(id){
@@ -44,7 +46,7 @@ export class SmartfarmUsers {
       return Observable.throw("Please insert credentials");
     } else {
       return Observable.create(observer => {
-        var url = this.smartfarmApiUrl + '/users/login';
+        var url = this.smartfarmApiUrl + '/users/login-admin';
         var data = JSON.stringify({name: credentials.name, password: credentials.password})
         let headers = new Headers({ 'Content-Type': 'application/json' });
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Optional} from '@angular/core';
+import { LoadingController, Loading } from 'ionic-angular';
+
 
 import { SensorCrop } from '../../models/sensorCrop';
 import { Sensor } from '../../models/sensor';
@@ -19,17 +20,19 @@ import { AssignSensorCropPage } from '../assign-sensor-crop/assign-sensor-crop';
   templateUrl: 'sensor-crop-details.html',
 })
 export class SensorCropDetailsPage {
+  loading: Loading;
   sensors: Sensor[];
   sensorCrop: SensorCrop;
   smartFarmSensorCrop: SmartfarmSensorCrop;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private smartfarmSensorCrop: SmartfarmSensorCrop) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private smartfarmSensorCrop: SmartfarmSensorCrop, private loadingCtrl: LoadingController) {
     this.sensors = [];
   	this.smartFarmSensorCrop = smartfarmSensorCrop;
   	this.sensorCrop = navParams.get('sensorCrop');
   }
 
   ionViewWillEnter(){
+    this.showLoading();
   	console.log("will enter");
   	this.sensors = [];
   	for(let sensorId of this.sensorCrop.sensors){
@@ -37,15 +40,23 @@ export class SensorCropDetailsPage {
   			console.log(sensor);
   			this.sensors.push(sensor);
   		})
-  	}	
+  	}
+    setTimeout(() => { this.loading.dismiss(); });	
   }
 
-  goToAddSensor(sensors: Sensor[]){
-  	this.navCtrl.push(AssignSensorCropPage, {sensors})
+  goToAddSensor(sensors: Sensor[], sensoCrop: SensorCrop){
+  	this.navCtrl.push(AssignSensorCropPage, {sensors, sensoCrop})
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SensorCropDetails');
+  }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    this.loading.present();
   }
 
 }

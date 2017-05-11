@@ -35,7 +35,7 @@ export class MyApp {
       { title: 'Manage Users', component: UsersPage },
       { title: 'Manage Crops', component: CropsPage },
       { title: 'Manage Sensors', component: SensorsPage },
-      { title: 'Sensor Crop', component: SensorCropPage}
+      { title: 'Manage CropUsers', component: SensorCropPage}
     ];
   }
 

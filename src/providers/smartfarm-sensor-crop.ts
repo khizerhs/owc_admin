@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -17,7 +17,7 @@ import {Sensor} from '../models/sensor';
 @Injectable()
 export class SmartfarmSensorCrop {
 
-  smartfarmApiUrl = 'http://localhost:3000';
+  smartfarmApiUrl = 'https://sjsusmartfarm-backend.herokuapp.com';
 
   constructor(public http: Http) {
     console.log('Hello SmartfarmSensorCrop Provider');
@@ -31,6 +31,12 @@ export class SmartfarmSensorCrop {
   getSensor(sensorId):Observable<Sensor>{
     return this.http.get(`${this.smartfarmApiUrl}/sensors/${sensorId}`)
     .map(res => <Sensor>res.json());
+  }
+
+  update(sensorIds, id){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    console.log(JSON.stringify({"sensors":sensorIds}));
+    return this.http.put(`${this.smartfarmApiUrl}/crop-user/${id}`, JSON.stringify({"sensors":sensorIds}), {headers:headers});
   }
 
 

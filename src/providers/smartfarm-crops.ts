@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -33,23 +33,27 @@ export class SmartfarmCrops {
   }
 
   save(createFormData) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(createFormData);
-    return this.http.post(`${this.smartfarmApiUrl}/crops`,createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/crops`,createFormData, {headers:headers});
   }
 
   saveStage(createFormData) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(createFormData);
-    return this.http.post(`${this.smartfarmApiUrl}/cropstage`,createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/cropstage`,createFormData, {headers:headers});
   }
 
-    update(updateFormData, id){
+  update(updateFormData, id){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(updateFormData);
-    return this.http.put(`${this.smartfarmApiUrl}/crops/${id}`,updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/crops/${id}`,updateFormData, {headers:headers});
   }
 
-    updateStage(updateFormData){
+  updateStage(updateFormData){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(updateFormData);
-    return this.http.put(`${this.smartfarmApiUrl}/cropstage`,updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/cropstage`,updateFormData, {headers:headers});
   }
 
   delete(id){

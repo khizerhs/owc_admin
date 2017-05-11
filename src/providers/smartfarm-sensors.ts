@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
@@ -26,13 +26,15 @@ export class SmartfarmSensors {
   }
 
   save(createFormData) {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(createFormData);
-    return this.http.post(`${this.smartfarmApiUrl}/sensors`,createFormData);
+    return this.http.post(`${this.smartfarmApiUrl}/sensors`,createFormData,  {headers:headers});
   }
 
   update(updateFormData, id){
+  let headers = new Headers({ 'Content-Type': 'application/json' });
     JSON.stringify(updateFormData);
-    return this.http.put(`${this.smartfarmApiUrl}/sensors/${id}`,updateFormData);
+    return this.http.put(`${this.smartfarmApiUrl}/sensors/${id}`,updateFormData,  {headers:headers});
   }
 
   delete(id){
