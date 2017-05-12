@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { AlertController, LoadingController, Loading } from 'ionic-angular';
 import { UsersPage } from '../users/users';
 import { SmartfarmUsers } from '../../providers/smartfarm-users';
@@ -21,7 +21,8 @@ export class LoginPage {
 	 registerCredentials = {name: '', password: ''};
 
   constructor(public navCtrl: NavController, private smartfarmUsers: SmartfarmUsers, 
-              private loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+              private loadingCtrl: LoadingController, private alertCtrl: AlertController, public menu: MenuController,) {
+              this.menu.enable(false);
   }
 
   ionViewDidLoad() {
@@ -35,6 +36,7 @@ export class LoginPage {
         if (allowed) {
           setTimeout(() => {
           this.loading.dismiss();
+          this.menu.enable(true);
           this.navCtrl.setRoot(UsersPage)
           });
         } else {
